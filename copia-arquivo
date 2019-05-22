@@ -1,0 +1,45 @@
+Const USER_PROFILE = &H28&
+
+valor = MsgBox ("deseja atualizar os arquivos?",4,"Choose options")
+wscript.echo "antes do if"
+
+If valor = 6 Then
+ 'wscript.echo "entrou na condicional"
+
+
+'Retorna caminho do Desktop do usuario
+ Set objShell = CreateObject("Shell.Application")
+ Set objFolder = objShell.Namespace(USER_PROFILE)
+ Set objFolderItem = objFolder.Self
+
+'cria variavel com endereço da pasta destino
+ sDstDir = "Z:\ALMOXARIFADO\web\web-teste\baixar"
+
+'cria variavel com endereço da pasta origem, Arquivos que serão copiados
+ tarefas = "C:\Users\tr642633\Documents\rodrigo\tarefas\tarefas.xlsm*" 
+ documentos = "C:\Users\tr642633\Documents\rodrigo\tarefas\docs_aberto\RM-DM X BAIXA ANIEL.xlsm*"
+ guardadoc = "C:\Users\tr642633\Documents\rodrigo\guarda doc\ACOMPANHAMENTO - RM.DM_PR.xlsm*"
+ un = "C:\Users\tr642633\Documents\rodrigo\tarefas\docs_aberto\unpicking\unpicking.xlsm*"
+ df = "C:\Users\tr642633\Documents\rodrigo\delay_fornecedor\delay_fornecedor.xlsm*"
+ bc = "C:\Users\tr642633\Documents\rodrigo\balanceamento\balanceamento PVR4K.xlsm*"
+
+'WScript.Sleep 5000
+
+Set oFS = CreateObject("Scripting.FileSystemObject") 
+
+
+ 'Copiar arquivoss
+ oFS.CopyFile tarefas ,sDstDir, TRUE
+ oFS.CopyFile documentos ,sDstDir, TRUE
+ oFS.CopyFile guardadoc ,sDstDir, TRUE
+ oFS.CopyFile un ,sDstDir, TRUE
+ oFS.CopyFile df ,sDstDir, TRUE
+ oFS.CopyFile bc ,sDstDir, TRUE
+
+ wscript.echo "Arquivo copiado."
+
+Else
+ wscript.echo "Procedimento cancelado"
+
+
+End If
