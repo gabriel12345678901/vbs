@@ -1,0 +1,28 @@
+Dim WShell
+Set WShell = CreateObject("WScript.Shell")
+
+For i = 0 To 100000
+
+'SetMousePosition
+Dim Excel: Set Excel = WScript.CreateObject("Excel.Application") 
+
+Excel.ExecuteExcel4Macro ("CALL(""user32"",""SetCursorPos"",""JJJ"",100,630,"&LeftClick&")")
+Excel.ExecuteExcel4Macro "CALL(""user32"",""SetCursorPos"",""JJJ"",100,630)"
+    
+BtnCode = WShell.Popup("ROBO ANTI SLEEPING!!",7)
+Select Case BtnCode
+   
+   case 7      WScript.Echo "ROBO ANTI SLEPPING RODANDO.."
+   
+End Select
+
+WScript.Sleep 3000    
+
+WScript.Sleep 15000  
+
+Next
+
+
+
+
+
