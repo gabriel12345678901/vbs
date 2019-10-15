@@ -1,28 +1,22 @@
 Dim WShell
 Set WShell = CreateObject("WScript.Shell")
 
-For i = 0 To 100000
 
-'SetMousePosition
-Dim Excel: Set Excel = WScript.CreateObject("Excel.Application") 
 
-Excel.ExecuteExcel4Macro ("CALL(""user32"",""SetCursorPos"",""JJJ"",100,630,"&LeftClick&")")
-Excel.ExecuteExcel4Macro "CALL(""user32"",""SetCursorPos"",""JJJ"",100,630)"
-    
-BtnCode = WShell.Popup("ROBO ANTI SLEEPING!!",7)
-Select Case BtnCode
-   
+do
+
+ Dim Excel: Set Excel = WScript.CreateObject("Excel.Application") 
+
+ 'Excel.ExecuteExcel4Macro ("CALL(""user32"",""SetCursorPos"",""JJJ"",1,6,"&LeftClick&")")
+ Excel.ExecuteExcel4Macro "CALL(""user32"",""SetCursorPos"",""JJJ"",700,350)" ' 700 largura, 350 altura
+ BtnCode = WShell.Popup("ROBO ANTI SLEEPING!!",7)
+ Select Case BtnCode
    case 7      WScript.Echo "ROBO ANTI SLEPPING RODANDO.."
-   
-End Select
+ End Select
 
-WScript.Sleep 3000    
-
-WScript.Sleep 15000  
-
-Next
-
-
+ WScript.Sleep 7000    
+ WScript.Sleep 25000  
+loop
 
 
 
