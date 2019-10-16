@@ -1,0 +1,151 @@
+Esc::
+dia := A_DD
+mes := A_MM
+mes_passado := A_MM -1
+ano := A_YYYY
+
+
+Sleep, 10000
+
+timer1 = 1000
+timer2 = 7000
+
+;Run, Notepad.exe
+;WinActivate, Untitled - Notepad
+;WinWaitActive, Untitled - Notepad
+
+Run, saplogon.exe
+;MsgBox, clique em ok, acione a tecla windows s
+
+Sleep, timer2
+
+#a::
+send {# a}
+ Sleep, timer1
+Send {Down}
+ Sleep, timer1
+Send {Down}
+ Sleep, timer1
+Send {Enter}
+
+Sleep, timer2
+
+#b::
+send {# b}
+ Sleep, timer1
+Send S85657620925
+ Sleep, timer1
+Send {Down}
+ Sleep, timer1
+Send @Jesus123
+ Sleep, timer1
+Send {Enter}
+
+Sleep, timer2
+
+
+
+
+
+;ACESSO A zmm062
+#c::
+send {# c}
+ Sleep, timer1
+Send zmm062
+ Sleep, timer1
+Send {Enter}
+
+Sleep, timer2
+
+Send {Down}
+Send {Down}
+Send {Down}
+Send {Down}
+Send {Down}
+
+Send, %dia%0%mes_passado%%ano%
+Send,{tab}
+Send, %dia%%mes%%ano%
+
+Sleep timer1
+
+Send {Tab}
+Send {Tab}
+
+Send {Down}
+Send {Down}
+Send {Down}
+
+Send, 01pr
+Sleep, timer1
+Send {Down}
+
+Send, DSEP
+Sleep, timer1
+
+Send {Tab}
+Send {Tab}
+
+Send {Enter}
+Sleep, timer1
+
+Send {Down}
+Send, DTEC
+Sleep, timer1
+Send {f8}
+Sleep, timer1
+
+Send {Tab}
+Send {Tab}
+Send {Tab}
+Send {Tab}
+Send {Tab}
+
+Send {Down}
+Send {Down}
+
+
+
+
+
+Send {Tab}
+Send {Tab}
+Send {Tab}
+Send {Tab}
+Send {Tab}
+Send {Tab}
+Send {Tab}
+Send {Tab}
+Send {Tab}
+Send {Tab}
+Send {Tab}
+Send {Tab}
+Send {Tab}
+Send {Tab}
+Send {Tab}
+Send {Tab}
+
+Send, 01pr
+
+Sleep, timer1
+
+Send {Tab}
+Send {Tab}
+
+Send {Enter}
+Sleep, timer1
+
+Send {Down}
+Send, 65pr
+Sleep, timer1
+
+Send {Down}
+Send, tlpr
+Sleep, timer1
+Send {f8}
+
+Sleep, timer1
+Send {f8}
+
+
+return
