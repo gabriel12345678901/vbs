@@ -18,7 +18,7 @@ If opcao = "" Then
 end if
 
 intRow = 2
-'linfim = cells(1048576,1).end(xlup).row
+
   Do Until objExcel.Cells(intRow,20).Value = ""
    
    
