@@ -1,0 +1,52 @@
+rede = InputBox("Digite a rede, interna ou externa: ", "Mensagem")
+
+if rede = "interna" then
+ rede = "C:/Users/tr642633/Documents/rodrigo/mini.xlsx" 
+end If
+
+if rede = "externa" then
+ rede = "Z:/ALMOXARIFADO/Rodrigo/mini.xlsx" 
+end If
+
+
+Set objExcel = CreateObject("Excel.Application")
+Set objWorkbook = objExcel.Workbooks.Open(rede)
+
+opcao = InputBox("Digite alguma coisa: ", "Mensagem")
+If opcao = "" Then 
+   WScript.Quit  'Detect Cancel
+end if
+
+intRow = 2
+'linfim = cells(1048576,1).end(xlup).row
+  Do Until objExcel.Cells(intRow,20).Value = ""
+   
+    
+      matricula = objExcel.Cells(intRow, 20).Value
+      nome = objExcel.Cells(intRow, 11).Value
+      cpf = objExcel.Cells(intRow, 14).Value
+      funcao = objExcel.Cells(intRow, 18).Value
+      filial = objExcel.Cells(intRow, 9).Value
+      id_sap = objExcel.Cells(intRow, 1).Value
+      id_aniel = objExcel.Cells(intRow, 12).Value
+      
+      fone = objExcel.Cells(intRow, 32).Value
+      cc = objExcel.Cells(intRow, 10).Value
+      ga = objExcel.Cells(intRow, 33).Value
+      go = objExcel.Cells(intRow, 34).Value
+      setor = objExcel.Cells(intRow, 35).Value
+
+      
+
+      
+      
+      intRow = intRow + 1
+        if opcao = matricula then Wscript.Echo "Nome: " & nome & + vbCrLf +"CPF: " & cpf & + vbCrLf +"Funcao: " & funcao &+ vbCrLf + "Filial: " & filial & + vbCrLf +"ID SAP: " & id_sap &+ vbCrLf + "ID aniel: " & id_aniel & + vbCrLf +"CC: " & cc & + vbCrLf +"GA: " & ga & + vbCrLf + "GO: " & go & + vbCrLf + "Setor: " & setor
+         
+      
+
+    
+     
+  Loop
+
+objExcel.Quit
