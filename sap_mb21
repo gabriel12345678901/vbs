@@ -1,0 +1,135 @@
+Public mov, centro_origem, centro_destino, recebedor, dep_origem, dep_destino, material, quantidade As String
+Public i As Integer
+
+Sub teste()
+Sheets("painel").Select
+linfim = Cells(1048576, 1).End(xlUp).Row
+
+mov = Range("b1").Value
+centro_origem = Range("d1").Value
+recebedor = Range("f1").Value
+dep_origem = Range("h1").Value
+
+
+If Not IsObject(Sap_application) Then
+   Set SapGuiAuto = GetObject("SAPGUI")
+   Set Sap_application = SapGuiAuto.GetScriptingEngine
+End If
+If Not IsObject(Connection) Then
+   Set Connection = Sap_application.Children(0)
+End If
+If Not IsObject(session) Then
+   Set session = Connection.Children(0)
+End If
+If IsObject(WScript) Then
+   WScript.ConnectObject session, "on"
+   WScript.ConnectObject Sap_application, "on"
+End If
+
+
+session.findById("wnd[0]").maximize
+session.findById("wnd[0]/tbar[0]/okcd").Text = "mb21"
+session.findById("wnd[0]").sendVKey 0
+session.findById("wnd[0]/usr/ctxtRM07M-BWART").Text = mov
+session.findById("wnd[0]/usr/ctxtRM07M-WERKS").Text = centro_origem
+session.findById("wnd[0]").sendVKey 0
+
+
+session.findById("wnd[0]/usr/txtRKPF-WEMPF").Text = recebedor
+session.findById("wnd[0]/usr/ctxtRKPF-UMWRK").Text = centro_origem
+session.findById("wnd[0]/usr/ctxtRKPF-UMLGO").Text = dep_origem
+
+If linfim < 16 Then
+
+ For i = 4 To linfim
+  material = Range("a" & i).Value
+  quantidade = Range("b" & i).Value
+  dep_destino = Range("c" & i).Value
+
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/ctxtRESB-MATNR[" & i - 4 & ",7]").Text = material
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/txtRESB-ERFMG[" & i - 4 & ",26]").Text = quantidade
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/ctxtRESB-LGORT[" & i - 4 & ",53]").Text = dep_destino
+
+
+Next
+
+End If
+
+If linfim >= 16 And linfim <= 27 Then
+
+ For i = 4 To linfim - 4
+  
+  material = Range("a" & i).Value
+  quantidade = Range("b" & i).Value
+  dep_destino = Range("c" & i).Value
+  
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/ctxtRESB-MATNR[" & i - 4 & ",7]").Text = material
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/txtRESB-ERFMG[" & i - 4 & ",26]").Text = quantidade
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/ctxtRESB-LGORT[" & i - 4 & ",53]").Text = dep_destino
+  
+  y = i
+ Next
+session.findById("wnd[0]/tbar[1]/btn[7]").press
+
+For i = y + 1 To linfim
+  
+  material = Range("a" & i).Value
+  quantidade = Range("b" & i).Value
+  dep_destino = Range("c" & i).Value
+  
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/ctxtRESB-MATNR[" & i - 16 & ",7]").Text = material
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/txtRESB-ERFMG[" & i - 16 & ",26]").Text = quantidade
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/ctxtRESB-LGORT[" & i - 16 & ",53]").Text = dep_destino
+  
+  
+ Next
+
+End If
+
+If linfim >= 27 And linfim <= 39 Then
+
+ For i = 4 To 15
+  
+  material = Range("a" & i).Value
+  quantidade = Range("b" & i).Value
+  dep_destino = Range("c" & i).Value
+  
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/ctxtRESB-MATNR[" & i - 4 & ",7]").Text = material
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/txtRESB-ERFMG[" & i - 4 & ",26]").Text = quantidade
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/ctxtRESB-LGORT[" & i - 4 & ",53]").Text = dep_destino
+  
+  y = i
+ Next
+session.findById("wnd[0]/tbar[1]/btn[7]").press
+
+For i = y + 1 To linfim - 8
+  
+  material = Range("a" & i).Value
+  quantidade = Range("b" & i).Value
+  dep_destino = Range("c" & i).Value
+  
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/ctxtRESB-MATNR[" & i - 16 & ",7]").Text = material
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/txtRESB-ERFMG[" & i - 16 & ",26]").Text = quantidade
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/ctxtRESB-LGORT[" & i - 16 & ",53]").Text = dep_destino
+  
+  Z = y + 13
+ Next
+ session.findById("wnd[0]/tbar[1]/btn[7]").press
+ 
+ For i = Z To linfim
+  
+  material = Range("a" & i).Value
+  quantidade = Range("b" & i).Value
+  dep_destino = Range("c" & i).Value
+  
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/ctxtRESB-MATNR[" & i - 28 & ",7]").Text = material
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/txtRESB-ERFMG[" & i - 28 & ",26]").Text = quantidade
+  session.findById("wnd[0]/usr/sub:SAPMM07R:0521/ctxtRESB-LGORT[" & i - 28 & ",53]").Text = dep_destino
+  
+  
+ Next
+ 
+End If
+
+End Sub
+
